@@ -1,0 +1,60 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
+import { Button } from "@/components/ui/Button";
+import { useAddMember } from "@/hooks/useGroups";
+import { ApiError } from "@/lib/apiClient";
+
+export function AddMemberForm({ groupId, onClose }: { groupId: string; onClose: () => void }) {
+  const addMember = useAddMember(groupId);
+  const [email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    setErrorMessage(null);
+
+    addMember.mutate(email, {
+      onSuccess: onClose,
+      onError: (err) => {
+        setErrorMessage(err instanceof ApiError ? err.message : "Something went wrong");
+      },
+    });
+  }
+
+  return (
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-slate-900/30" onClick={onClose}>
+      <div
+        className="w-full max-w-sm rounded-xl bg-white p-6 shadow-xl"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <h2 className="text-lg font-bold text-slate-900">Add a member</h2>
+        <p className="mt-1 text-sm text-slate-500">They need an existing SplitLedger account.</p>
+        <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+          <input
+            type="email"
+            required
+            autoFocus
+            placeholder="friend@example.com"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
+          />
+
+          {errorMessage && (
+            <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{errorMessage}</p>
+          )}
+
+          <div className="flex gap-2">
+            <Button type="button" variant="secondary" className="flex-1" onClick={onClose}>
+              Cancel
+            </Button>
+            <Button type="submit" className="flex-1" disabled={addMember.isPending}>
+              {addMember.isPending ? "Adding..." : "Add"}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}

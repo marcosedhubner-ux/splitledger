@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String         @id @default(cuid())
+  fullName         String
+  email            String         @unique
+  passwordHash     String
+  createdAt        DateTime       @default(now())
+  memberships      GroupMember[]
+  createdGroups    Group[]        @relation("CreatedGroups")
+  paidExpenses     Expense[]      @relation("PaidBy")
+  expenseSplits    ExpenseSplit[]
+  paymentsSent     Payment[]      @relation("PaymentFrom")
+  paymentsReceived Payment[]      @relation("PaymentTo")
+
+  @@map("users")
+}
+
+model Group {
+  id          String        @id @default(cuid())
+  name        String
+  currency    String        @default("USD")
+  createdBy   User          @relation("CreatedGroups", fields: [createdById], references: [id])
+  createdById String
+  members     GroupMember[]
+  expenses    Expense[]
+  payments    Payment[]
+  createdAt   DateTime      @default(now())
+
+  @@map("groups")
+}
+
+model GroupMember {
+  id       String   @id @default(cuid())
+  group    Group    @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  groupId  String
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  joinedAt DateTime @default(now())
+
+  @@unique([groupId, userId])
+  @@map("group_members")
+}
+
+model Expense {
+  id          String         @id @default(cuid())
+  group       Group          @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  groupId     String
+  description String
+  amount      Decimal        @db.Decimal(10, 2)
+  paidBy      User           @relation("PaidBy", fields: [paidById], references: [id])
+  paidById    String
+  splits      ExpenseSplit[]
+  createdAt   DateTime       @default(now())
+
+  @@index([groupId])
+  @@map("expenses")
+}
+
+model ExpenseSplit {
+  id          String  @id @default(cuid())
+  expense     Expense @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+  expenseId   String
+  user        User    @relation(fields: [userId], references: [id])
+  userId      String
+  shareAmount Decimal @db.Decimal(10, 2)
+
+  @@unique([expenseId, userId])
+  @@map("expense_splits")
+}
+
+model Payment {
+  id         String   @id @default(cuid())
+  group      Group    @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  groupId    String
+  fromUser   User     @relation("PaymentFrom", fields: [fromUserId], references: [id])
+  fromUserId String
+  toUser     User     @relation("PaymentTo", fields: [toUserId], references: [id])
+  toUserId   String
+  amount     Decimal  @db.Decimal(10, 2)
+  settledAt  DateTime @default(now())
+
+  @@index([groupId])
+  @@map("payments")
+}
