@@ -33,19 +33,20 @@ function GroupDetailView({ groupId }: { groupId: string }) {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-col gap-3">
         <div>
           <h1 className="text-2xl font-bold text-ink">{group.name}</h1>
           <p className="text-xs text-ink-soft">
             {group.members.length} member{group.members.length === 1 ? "" : "s"} &middot; {group.currency}
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="secondary" onClick={() => setIsAddingMember(true)}>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="secondary" className="flex-1" onClick={() => setIsAddingMember(true)}>
             Add member
           </Button>
           <Button
             variant="secondary"
+            className="flex-1"
             onClick={() => {
               setPaymentPrefill(null);
               setIsRecordingPayment(true);
@@ -53,11 +54,13 @@ function GroupDetailView({ groupId }: { groupId: string }) {
           >
             Record payment
           </Button>
-          <Button onClick={() => setIsAddingExpense(true)}>Add expense</Button>
+          <Button className="w-full" onClick={() => setIsAddingExpense(true)}>
+            Add expense
+          </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6">
         <BalancesPanel balances={balances} members={group.members} />
         <SettlementsPanel
           settlements={settlements}

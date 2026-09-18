@@ -16,9 +16,11 @@ function GroupsView() {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-col gap-3">
         <h1 className="text-2xl font-bold text-ink">Your groups</h1>
-        <Button onClick={() => setIsCreating(true)}>New group</Button>
+        <Button className="w-full" onClick={() => setIsCreating(true)}>
+          New group
+        </Button>
       </div>
 
       {isLoading ? (
@@ -26,7 +28,7 @@ function GroupsView() {
       ) : groups?.length === 0 ? (
         <p className="text-sm text-ink-soft">You are not part of any group yet.</p>
       ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4">
           {groups?.map((group) => (
             <Link key={group.id} href={`/groups/${group.id}`}>
               <Card className="transition-shadow hover:shadow-[0_4px_20px_rgba(36,31,26,0.12)]">
