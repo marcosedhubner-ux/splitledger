@@ -1,12 +1,12 @@
-# SplitLedger
+# Tab
 
-Split group expenses with friends and settle up with the fewest possible payments. Add an expense, pick who it's split between, and every member's balance updates instantly — including a suggested settlement plan computed by a debt-simplification algorithm, not just a raw "who owes who" list per expense.
+Untangles a week of shared dinners into the fewest payments that make everyone even. Add an expense, pick who it's split between, and every member's balance updates instantly — including a suggested settlement plan computed by a debt-simplification algorithm, not just a raw "who owes who" list per expense.
 
 [Leia em português](./README.pt-BR.md)
 
 ## Why this exists
 
-Track expenses in a group of four for a week and you'll end up with a dozen small debts crossing each other — Alex owes Bob, Bob owes Carla, Carla owes Alex. Naively, settling up takes one transaction per debt. SplitLedger nets those debts down to the minimum number of transfers that zero everyone out, which is the actual hard part of a bill-splitting app — the CRUD around it is the easy 80%.
+Track expenses in a group of four for a week and you'll end up with a dozen small debts crossing each other — Alex owes Bob, Bob owes Carla, Carla owes Alex. Naively, settling up takes one transaction per debt. Tab nets those debts down to the minimum number of transfers that zero everyone out, which is the actual hard part of a bill-splitting app — the CRUD around it is the easy 80%.
 
 ## Architecture
 

@@ -16,31 +16,31 @@ export function SettlementsPanel({
   const nameById = new Map(members.map((m) => [m.userId, m.user.fullName]));
 
   return (
-    <Card>
-      <h2 className="text-sm font-semibold text-slate-700">Suggested settlements</h2>
-      <p className="mt-1 text-xs text-slate-400">
+    <Card className="border-t-2 border-dashed border-terracotta/40 pt-6">
+      <h2 className="text-sm font-semibold text-ink">Suggested settlements</h2>
+      <p className="mt-1 text-xs text-ink-soft">
         The fewest transfers that would bring everyone to zero.
       </p>
       {settlements.length === 0 ? (
-        <p className="mt-3 text-sm text-slate-400">Everyone is settled up.</p>
+        <p className="mt-3 text-sm text-ink-soft">Everyone is settled up.</p>
       ) : (
         <ul className="mt-3 space-y-2">
           {settlements.map((settlement, index) => (
             <li
               key={index}
-              className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm"
+              className="flex items-center justify-between rounded-xl bg-paper px-3 py-2 text-sm"
             >
               <span>
-                <span className="font-medium text-slate-800">
+                <span className="font-medium text-ink">
                   {nameById.get(settlement.fromUserId) ?? "Unknown"}
                 </span>{" "}
                 pays{" "}
-                <span className="font-medium text-slate-800">
+                <span className="font-medium text-ink">
                   {nameById.get(settlement.toUserId) ?? "Unknown"}
                 </span>
               </span>
               <div className="flex items-center gap-3">
-                <span className="font-semibold text-slate-900">${settlement.amount.toFixed(2)}</span>
+                <span className="font-mono font-semibold text-ink">${settlement.amount.toFixed(2)}</span>
                 {settlement.fromUserId === currentUserId && (
                   <Button variant="secondary" onClick={() => onRecord(settlement)}>
                     Record

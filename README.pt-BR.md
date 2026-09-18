@@ -1,4 +1,4 @@
-# SplitLedger
+# Tab
 
 Divida despesas em grupo com amigos e acerte as contas com o menor número possível de pagamentos. Adicione uma despesa, escolha entre quem ela é dividida, e o saldo de cada membro atualiza na hora — incluindo um plano de acerto sugerido, calculado por um algoritmo de simplificação de dívidas, não apenas uma lista bruta de "quem deve pra quem" por despesa.
 
@@ -6,7 +6,7 @@ Divida despesas em grupo com amigos e acerte as contas com o menor número poss�
 
 ## Por que esse projeto existe
 
-Registre despesas num grupo de quatro pessoas durante uma semana e você acaba com uma dezena de pequenas dívidas se cruzando — Alex deve pro Bob, Bob deve pra Carla, Carla deve pro Alex. Ingenuamente, acertar as contas exigiria uma transação por dívida. O SplitLedger líquida essas dívidas até o número mínimo de transferências que zera todo mundo, que é a parte realmente difícil de um app de divisão de contas — o CRUD ao redor disso é os 80% fáceis.
+Registre despesas num grupo de quatro pessoas durante uma semana e você acaba com uma dezena de pequenas dívidas se cruzando — Alex deve pro Bob, Bob deve pra Carla, Carla deve pro Alex. Ingenuamente, acertar as contas exigiria uma transação por dívida. O Tab líquida essas dívidas até o número mínimo de transferências que zera todo mundo, que é a parte realmente difícil de um app de divisão de contas — o CRUD ao redor disso é os 80% fáceis.
 
 ## Arquitetura
 

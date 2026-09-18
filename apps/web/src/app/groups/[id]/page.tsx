@@ -25,7 +25,7 @@ function GroupDetailView({ groupId }: { groupId: string }) {
   const [isRecordingPayment, setIsRecordingPayment] = useState(false);
 
   if (isLoading || !data || !session) {
-    return <p className="text-sm text-slate-400">Loading group...</p>;
+    return <p className="text-sm text-ink-soft">Loading group...</p>;
   }
 
   const { group, balances, settlements } = data;
@@ -35,8 +35,8 @@ function GroupDetailView({ groupId }: { groupId: string }) {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">{group.name}</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-bold text-ink">{group.name}</h1>
+          <p className="text-xs text-ink-soft">
             {group.members.length} member{group.members.length === 1 ? "" : "s"} &middot; {group.currency}
           </p>
         </div>

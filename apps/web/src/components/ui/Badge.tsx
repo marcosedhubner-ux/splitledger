@@ -4,11 +4,11 @@ import type { ReactNode } from "react";
 type BadgeTone = "neutral" | "success" | "warning" | "danger" | "info";
 
 const toneStyles: Record<BadgeTone, string> = {
-  neutral: "bg-slate-100 text-slate-700 ring-slate-300",
-  success: "bg-emerald-50 text-emerald-700 ring-emerald-300",
-  warning: "bg-amber-50 text-amber-700 ring-amber-300",
-  danger: "bg-rose-50 text-rose-700 ring-rose-300",
-  info: "bg-teal-50 text-teal-700 ring-teal-300",
+  neutral: "bg-paper text-ink-soft ring-ink/15",
+  success: "bg-success-soft text-success ring-success/25",
+  warning: "bg-warning-soft text-warning ring-warning/25",
+  danger: "bg-danger-soft text-danger ring-danger/25",
+  info: "bg-terracotta-soft text-terracotta ring-terracotta/25",
 };
 
 export function Badge({ tone = "neutral", children }: { tone?: BadgeTone; children: ReactNode }) {

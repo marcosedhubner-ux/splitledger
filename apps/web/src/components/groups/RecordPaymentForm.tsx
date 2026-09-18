@@ -38,20 +38,20 @@ export function RecordPaymentForm({
   }
 
   return (
-    <div className="fixed inset-0 z-20 flex items-center justify-center bg-slate-900/30" onClick={onClose}>
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-ink/30" onClick={onClose}>
       <div
-        className="w-full max-w-sm rounded-xl bg-white p-6 shadow-xl"
+        className="w-full max-w-sm rounded-2xl bg-surface p-6 shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <h2 className="text-lg font-bold text-slate-900">Record a payment</h2>
-        <p className="mt-1 text-sm text-slate-500">Log money you already sent outside the app.</p>
+        <h2 className="text-lg font-bold text-ink">Record a payment</h2>
+        <p className="mt-1 text-sm text-ink-soft">Log money you already sent outside the app.</p>
         <form onSubmit={handleSubmit} className="mt-4 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700">Paid to</label>
+            <label className="block text-sm font-medium text-ink">Paid to</label>
             <select
               value={toUserId}
               onChange={(event) => setToUserId(event.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
+              className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta"
             >
               {members.map((member) => (
                 <option key={member.userId} value={member.userId}>
@@ -61,7 +61,7 @@ export function RecordPaymentForm({
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700">Amount</label>
+            <label className="block text-sm font-medium text-ink">Amount</label>
             <input
               type="number"
               required
@@ -69,12 +69,12 @@ export function RecordPaymentForm({
               step="0.01"
               value={amount}
               onChange={(event) => setAmount(Number(event.target.value))}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
+              className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta font-mono"
             />
           </div>
 
           {errorMessage && (
-            <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{errorMessage}</p>
+            <p className="rounded-lg bg-danger-soft px-3 py-2 text-sm text-danger">{errorMessage}</p>
           )}
 
           <div className="flex gap-2">

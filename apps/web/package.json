@@ -1,6 +1,7 @@
 {
-  "name": "@splitledger/web",
+  "name": "@tab/web",
   "version": "0.1.0",
+  "description": "Untangles a week of shared dinners into the fewest payments that make everyone even.",
   "private": true,
   "scripts": {
     "dev": "next dev",

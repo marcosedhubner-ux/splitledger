@@ -31,31 +31,30 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
-      <div className="relative hidden overflow-hidden bg-teal-950 lg:flex lg:flex-col lg:justify-between lg:p-12">
-        <div className="absolute inset-0 opacity-40 [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.15)_1px,transparent_0)] [background-size:24px_24px]" />
+    <div className="grid min-h-screen grid-cols-1 bg-paper lg:grid-cols-2">
+      <div className="receipt-texture relative hidden overflow-hidden border-r-2 border-dashed border-terracotta/30 bg-terracotta-soft lg:flex lg:flex-col lg:justify-between lg:p-12">
         <div className="relative z-10">
-          <span className="text-2xl font-bold text-white">SplitLedger</span>
+          <span className="text-2xl font-extrabold tracking-tight text-terracotta">Tab</span>
         </div>
         <div className="relative z-10 space-y-4">
-          <p className="max-w-md text-3xl font-semibold leading-tight text-white">
-            Nobody needs to pay everybody. Just the fewest people, the fewest times.
+          <p className="max-w-md text-3xl font-bold leading-tight text-ink">
+            Untangles a week of shared dinners into the fewest payments that make everyone even.
           </p>
-          <p className="max-w-sm text-sm text-teal-200">
-            Every expense updates the group&apos;s balances instantly, and settling up always suggests
-            the smallest possible number of transfers.
+          <p className="max-w-sm text-sm text-ink-soft">
+            Add what you spent, tag who was in on it — Tab does the math and tells you exactly who
+            pays who.
           </p>
         </div>
       </div>
 
       <div className="flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-sm">
-          <h1 className="text-2xl font-bold text-slate-900">Sign in</h1>
-          <p className="mt-1 text-sm text-slate-500">Welcome back.</p>
+          <h1 className="text-2xl font-bold text-ink">Sign in</h1>
+          <p className="mt-1 text-sm text-ink-soft">Welcome back — let&apos;s settle up.</p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700" htmlFor="email">
+              <label className="block text-sm font-medium text-ink" htmlFor="email">
                 Email
               </label>
               <input
@@ -65,11 +64,11 @@ export default function LoginPage() {
                 autoComplete="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
+                className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700" htmlFor="password">
+              <label className="block text-sm font-medium text-ink" htmlFor="password">
                 Password
               </label>
               <input
@@ -79,12 +78,12 @@ export default function LoginPage() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
+                className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta"
               />
             </div>
 
             {errorMessage && (
-              <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{errorMessage}</p>
+              <p className="rounded-lg bg-danger-soft px-3 py-2 text-sm text-danger">{errorMessage}</p>
             )}
 
             <Button type="submit" className="w-full" disabled={login.isPending}>
@@ -92,20 +91,20 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-slate-500">
+          <p className="mt-6 text-center text-sm text-ink-soft">
             New here?{" "}
-            <Link href="/register" className="font-medium text-teal-600 hover:underline">
+            <Link href="/register" className="font-medium text-terracotta hover:underline">
               Create an account
             </Link>
           </p>
 
-          <div className="mt-8 rounded-lg border border-dashed border-slate-300 p-4">
-            <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+          <div className="mt-8 rounded-xl border border-dashed border-ink/20 p-4">
+            <p className="text-xs font-medium uppercase tracking-wide text-ink-soft">
               Demo accounts (password: Passw0rd!123)
             </p>
             <ul className="mt-2 space-y-1">
               {DEMO_ACCOUNTS.map((email) => (
-                <li key={email} className="font-mono text-xs text-slate-600">
+                <li key={email} className="font-mono text-xs text-ink-soft">
                   {email}
                 </li>
               ))}

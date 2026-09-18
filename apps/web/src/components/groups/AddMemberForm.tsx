@@ -23,13 +23,13 @@ export function AddMemberForm({ groupId, onClose }: { groupId: string; onClose: 
   }
 
   return (
-    <div className="fixed inset-0 z-20 flex items-center justify-center bg-slate-900/30" onClick={onClose}>
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-ink/30" onClick={onClose}>
       <div
-        className="w-full max-w-sm rounded-xl bg-white p-6 shadow-xl"
+        className="w-full max-w-sm rounded-2xl bg-surface p-6 shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <h2 className="text-lg font-bold text-slate-900">Add a member</h2>
-        <p className="mt-1 text-sm text-slate-500">They need an existing SplitLedger account.</p>
+        <h2 className="text-lg font-bold text-ink">Add a member</h2>
+        <p className="mt-1 text-sm text-ink-soft">They need an existing Tab account.</p>
         <form onSubmit={handleSubmit} className="mt-4 space-y-4">
           <input
             type="email"
@@ -38,11 +38,11 @@ export function AddMemberForm({ groupId, onClose }: { groupId: string; onClose: 
             placeholder="friend@example.com"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
+            className="w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta"
           />
 
           {errorMessage && (
-            <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{errorMessage}</p>
+            <p className="rounded-lg bg-danger-soft px-3 py-2 text-sm text-danger">{errorMessage}</p>
           )}
 
           <div className="flex gap-2">
