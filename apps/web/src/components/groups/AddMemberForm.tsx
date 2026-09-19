@@ -25,7 +25,7 @@ export function AddMemberForm({ groupId, onClose }: { groupId: string; onClose: 
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-ink/30" onClick={onClose}>
       <div
-        className="w-full max-w-sm rounded-2xl bg-surface p-6 shadow-xl"
+        className="animate-fade-slide-in w-full max-w-sm rounded-2xl bg-surface p-6 shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
         <h2 className="text-lg font-bold text-ink">Add a member</h2>
@@ -38,7 +38,7 @@ export function AddMemberForm({ groupId, onClose }: { groupId: string; onClose: 
             placeholder="friend@example.com"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta"
+            className="w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-[260ms] focus:border-terracotta focus:ring-2 focus:ring-terracotta/25 focus:shadow-[0_0_0_4px_rgba(217,96,63,0.12)]"
           />
 
           {errorMessage && (

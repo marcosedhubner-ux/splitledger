@@ -11,11 +11,23 @@ const toneStyles: Record<BadgeTone, string> = {
   info: "bg-terracotta-soft text-terracotta ring-terracotta/25",
 };
 
-export function Badge({ tone = "neutral", children }: { tone?: BadgeTone; children: ReactNode }) {
+export function Badge({
+  tone = "neutral",
+  pulse,
+  children,
+}: {
+  tone?: BadgeTone;
+  /** Play a satisfying scale-pop, e.g. when the value it displays just changed.
+   * Pair with a `key` on the Badge (e.g. keyed by the value) so React remounts
+   * it and the animation replays. */
+  pulse?: boolean;
+  children: ReactNode;
+}) {
   return (
     <span
       className={clsx(
         "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset",
+        pulse && "animate-badge-pop",
         toneStyles[tone]
       )}
     >

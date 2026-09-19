@@ -58,7 +58,7 @@ export function NewExpenseForm({
       >
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold text-ink">New expense</h2>
-          <button onClick={onClose} className="text-ink-soft hover:text-ink">
+          <button onClick={onClose} className="text-ink-soft transition-colors duration-200 hover:text-ink">
             Close
           </button>
         </div>
@@ -70,7 +70,7 @@ export function NewExpenseForm({
               required
               value={description}
               onChange={(event) => setDescription(event.target.value)}
-              className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta"
+              className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-[260ms] focus:border-terracotta focus:ring-2 focus:ring-terracotta/25 focus:shadow-[0_0_0_4px_rgba(217,96,63,0.12)]"
             />
           </div>
 
@@ -83,7 +83,7 @@ export function NewExpenseForm({
               step="0.01"
               value={amount}
               onChange={(event) => setAmount(Number(event.target.value))}
-              className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta font-mono"
+              className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-[260ms] focus:border-terracotta focus:ring-2 focus:ring-terracotta/25 focus:shadow-[0_0_0_4px_rgba(217,96,63,0.12)] font-mono"
             />
           </div>
 
@@ -92,7 +92,7 @@ export function NewExpenseForm({
             <select
               value={paidById}
               onChange={(event) => setPaidById(event.target.value)}
-              className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta"
+              className="mt-1 w-full rounded-xl border border-ink/15 bg-surface px-3 py-2 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-[260ms] focus:border-terracotta focus:ring-2 focus:ring-terracotta/25 focus:shadow-[0_0_0_4px_rgba(217,96,63,0.12)]"
             >
               {members.map((member) => (
                 <option key={member.userId} value={member.userId}>
@@ -106,12 +106,15 @@ export function NewExpenseForm({
             <label className="block text-sm font-medium text-ink">Split equally between</label>
             <div className="mt-2 space-y-2">
               {members.map((member) => (
-                <label key={member.userId} className="flex items-center gap-2 text-sm text-ink">
+                <label
+                  key={member.userId}
+                  className="flex items-center gap-2 rounded-lg px-1 py-0.5 text-sm text-ink transition-colors duration-200 hover:bg-paper/60"
+                >
                   <input
                     type="checkbox"
                     checked={participantIds.includes(member.userId)}
                     onChange={() => toggleParticipant(member.userId)}
-                    className="h-4 w-4 rounded border-ink/25 text-terracotta focus:ring-terracotta"
+                    className="h-4 w-4 rounded border-ink/25 text-terracotta transition-shadow duration-200 focus:ring-2 focus:ring-terracotta/40 focus:ring-offset-1 focus:ring-offset-surface"
                   />
                   {member.user.fullName}
                 </label>

@@ -2,6 +2,23 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import type { GroupMemberInfo, Settlement } from "@/lib/types";
 
+function CoinCheckIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="8.25" strokeLinecap="round" strokeLinejoin="round" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="m8.75 12.25 2.25 2.25 4.25-4.75" />
+    </svg>
+  );
+}
+
 export function SettlementsPanel({
   settlements,
   members,
@@ -22,13 +39,16 @@ export function SettlementsPanel({
         The fewest transfers that would bring everyone to zero.
       </p>
       {settlements.length === 0 ? (
-        <p className="mt-3 text-sm text-ink-soft">Everyone is settled up.</p>
+        <div className="mt-3 flex flex-col items-center gap-2 py-6 text-center">
+          <CoinCheckIcon className="h-9 w-9 text-terracotta/35" />
+          <p className="text-sm text-ink-soft">Everyone is settled up.</p>
+        </div>
       ) : (
         <ul className="mt-3 space-y-2">
           {settlements.map((settlement, index) => (
             <li
               key={index}
-              className="flex items-center justify-between rounded-xl bg-paper px-3 py-2 text-sm"
+              className="animate-fade-slide-in flex items-center justify-between rounded-xl bg-paper px-3 py-2 text-sm transition-colors duration-200 hover:bg-terracotta-soft/50"
             >
               <span>
                 <span className="font-medium text-ink">
